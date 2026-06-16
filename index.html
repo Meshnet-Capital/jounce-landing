@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Jounce — Email worth opening</title>
+<meta name="description" content="Jounce is the design-first email platform for modern brands. Start from beautiful templates, build without code, and grow a list that opens, clicks, and buys. Coming soon." />
+<meta name="theme-color" content="#1A1917" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Jounce — Email worth opening" />
+<meta property="og:description" content="The design-first email platform for modern brands. Beautiful templates, a true drag-and-drop builder, and an audience that grows itself. Coming soon." />
+<meta property="og:url" content="https://jounce.com" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231A1917'/%3E%3Ctext x='50' y='72' font-family='Georgia,serif' font-size='62' fill='%23FAF8F3' text-anchor='middle' font-style='italic'%3EJ%3C/text%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<!-- gate the scroll-reveal on JS so content is never hidden if scripts fail -->
+<script>document.documentElement.className = 'js';</script>
+
+<style>
+  :root{
+    --ink:#1A1917;
+    --ink-soft:#56524b;
+    --ink-faint:#8a857c;
+    --paper:#FAF8F3;
+    --paper-2:#F2ECE1;
+    --card:#ffffff;
+    --line:rgba(26,25,23,.12);
+    --line-soft:rgba(26,25,23,.07);
+    --accent:#6C4BF0;
+    --shadow-sm:0 1px 2px rgba(26,25,23,.04), 0 8px 24px -12px rgba(26,25,23,.18);
+    --shadow-lg:0 2px 6px rgba(26,25,23,.05), 0 40px 80px -32px rgba(26,25,23,.32);
+    --serif:'Playfair Display', Georgia, 'Times New Roman', serif;
+    --sans:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --maxw:1140px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:var(--sans);
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  ::selection{background:rgba(108,75,240,.18)}
+
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .serif{font-family:var(--serif)}
+  .eyebrow{
+    font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--ink-faint);
+  }
+
+  /* ---------------- nav ---------------- */
+  header{position:absolute;top:0;left:0;right:0;z-index:20}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:26px 28px;max-width:var(--maxw);margin:0 auto}
+  .brand{display:flex;align-items:center;gap:11px;font-family:var(--serif);font-size:23px;font-weight:600;letter-spacing:-.01em}
+  .brand .mark{
+    width:32px;height:32px;border-radius:9px;background:var(--ink);color:var(--paper);
+    display:grid;place-items:center;font-style:italic;font-size:20px;line-height:1;padding-bottom:2px;
+  }
+  .nav .pill{
+    display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);
+    font-size:13px;font-weight:500;color:var(--ink-soft);
+    border:1px solid var(--line);border-radius:999px;padding:7px 14px;background:rgba(255,255,255,.5);
+    backdrop-filter:blur(6px);
+  }
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(108,75,240,.5);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(108,75,240,.45)}70%{box-shadow:0 0 0 7px rgba(108,75,240,0)}100%{box-shadow:0 0 0 0 rgba(108,75,240,0)}}
+
+  /* ---------------- hero ---------------- */
+  .hero{position:relative;padding:148px 0 96px}
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(900px 480px at 78% 8%, rgba(108,75,240,.07), transparent 60%),
+      radial-gradient(700px 420px at 8% 30%, rgba(196,97,59,.06), transparent 55%);
+  }
+  .hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .hero h1{
+    font-family:var(--serif);font-weight:500;letter-spacing:-.02em;line-height:1.02;
+    font-size:clamp(2.9rem,5.6vw,4.7rem);margin:22px 0 0;
+  }
+  .hero h1 em{font-style:italic;color:var(--accent)}
+  .hero .lede{font-size:clamp(1.05rem,1.4vw,1.2rem);color:var(--ink-soft);max-width:30em;margin:24px 0 0}
+
+  /* email capture */
+  .capture{margin-top:34px;max-width:440px}
+  .capture form{display:flex;gap:9px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:7px;box-shadow:var(--shadow-sm)}
+  .capture input{
+    flex:1;border:0;outline:0;background:transparent;font-family:var(--sans);font-size:15px;color:var(--ink);padding:0 12px;min-width:0;
+  }
+  .capture input::placeholder{color:var(--ink-faint)}
+  .btn{
+    font-family:var(--sans);font-size:14.5px;font-weight:600;cursor:pointer;border:0;
+    background:var(--ink);color:var(--paper);padding:12px 20px;border-radius:9px;white-space:nowrap;
+    transition:transform .15s ease, opacity .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);opacity:.92}
+  .capture .micro{font-size:13px;color:var(--ink-faint);margin-top:12px;display:flex;align-items:center;gap:7px}
+  .capture .micro svg{flex:none}
+  .capture.done form{display:none}
+  .capture .thanks{display:none;align-items:center;gap:11px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow-sm);font-size:15px}
+  .capture.done .thanks{display:flex}
+  .capture.done .micro{display:none}
+  .check{width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;flex:none}
+
+  /* hero visual: stacked email previews */
+  .stage{position:relative;height:520px}
+  .card-email{
+    position:absolute;background:var(--card);border-radius:16px;overflow:hidden;
+    box-shadow:var(--shadow-lg);border:1px solid var(--line-soft);
+  }
+  .card-email img{width:100%;height:100%;object-fit:cover}
+  .ce-photo{aspect-ratio:4/3;overflow:hidden}
+  .ce-photo img{aspect-ratio:4/3}
+  .ce-body{padding:16px 18px 20px}
+  .ce-cat{font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint)}
+  .ce-title{font-family:var(--serif);font-size:21px;line-height:1.15;margin:7px 0 6px;font-weight:600}
+  .ce-text{font-size:12.5px;color:var(--ink-soft);line-height:1.5}
+  .ce-btn{display:inline-block;margin-top:13px;font-size:11px;font-weight:600;letter-spacing:.04em;background:var(--ink);color:var(--paper);padding:8px 16px;border-radius:6px}
+
+  .stage .c1{width:300px;left:8%;top:40px;z-index:3;animation:float1 7s ease-in-out infinite}
+  .stage .c2{width:228px;right:2%;top:0;z-index:2;transform:rotate(3deg);animation:float2 8s ease-in-out infinite}
+  .stage .c3{width:240px;left:0;bottom:8px;z-index:1;transform:rotate(-4deg);animation:float3 9s ease-in-out infinite}
+  @keyframes float1{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  @keyframes float2{0%,100%{transform:rotate(3deg) translateY(0)}50%{transform:rotate(3deg) translateY(-18px)}}
+  @keyframes float3{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(-4deg) translateY(-10px)}}
+
+  /* ---------------- marquee trust ---------------- */
+  .trust{border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);background:rgba(255,255,255,.4)}
+  .trust .wrap{padding:26px 28px;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;text-align:center}
+  .trust p{font-size:14.5px;color:var(--ink-soft)}
+  .trust strong{color:var(--ink);font-weight:600}
+
+  /* ---------------- section scaffolding ---------------- */
+  section.block{padding:clamp(80px,11vw,140px) 0}
+  .head{max-width:640px}
+  .head h2{font-family:var(--serif);font-weight:500;letter-spacing:-.02em;line-height:1.08;font-size:clamp(2rem,3.6vw,3rem);margin:14px 0 0}
+  .head p{font-size:clamp(1.02rem,1.3vw,1.15rem);color:var(--ink-soft);margin:18px 0 0;max-width:34em}
+  .center{margin-left:auto;margin-right:auto;text-align:center}
+  .center p{margin-left:auto;margin-right:auto}
+
+  /* templates gallery */
+  .templates{background:var(--paper-2)}
+  .grid-t{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:56px}
+  .tcard{background:var(--card);border-radius:16px;overflow:hidden;border:1px solid var(--line-soft);box-shadow:var(--shadow-sm);transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+  .tcard:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+  .tcard .ph{aspect-ratio:5/4;overflow:hidden}
+  .tcard .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .tcard:hover .ph img{transform:scale(1.05)}
+  .tcard .meta{padding:20px 22px 24px}
+  .tcard .cat{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  .tcard h3{font-family:var(--serif);font-weight:600;font-size:23px;margin:9px 0 7px;letter-spacing:-.01em}
+  .tcard p{font-size:14px;color:var(--ink-soft)}
+
+  /* features */
+  .grid-f{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 34px;margin-top:60px}
+  .feat{padding-top:26px;border-top:1px solid var(--line)}
+  .feat .ic{width:42px;height:42px;border-radius:11px;background:var(--ink);color:var(--paper);display:grid;place-items:center;margin-bottom:18px}
+  .feat h3{font-family:var(--serif);font-weight:600;font-size:22px;letter-spacing:-.01em;margin-bottom:8px}
+  .feat p{font-size:14.5px;color:var(--ink-soft)}
+
+  /* countdown highlight */
+  .spot{background:var(--ink);color:var(--paper)}
+  .spot .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  .spot .eyebrow{color:rgba(250,248,243,.55)}
+  .spot h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.4vw,2.9rem);line-height:1.1;letter-spacing:-.02em;margin:14px 0 0}
+  .spot p{color:rgba(250,248,243,.72);font-size:1.08rem;margin:20px 0 0;max-width:32em}
+  .cd{background:#0f0e0d;border:1px solid rgba(250,248,243,.12);border-radius:18px;padding:38px 30px;text-align:center;box-shadow:var(--shadow-lg)}
+  .cd .lab{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:rgba(250,248,243,.5);margin-bottom:22px}
+  .cd .clock{display:flex;justify-content:center;gap:14px}
+  .cd .u{min-width:74px}
+  .cd .n{font-family:var(--serif);font-size:clamp(2.4rem,5vw,3.4rem);font-weight:500;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:.01em}
+  .cd .t{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(250,248,243,.45);margin-top:10px}
+  .cd .sep{font-family:var(--serif);font-size:clamp(2rem,4vw,2.8rem);color:rgba(250,248,243,.3);line-height:1.1}
+  .cd .cap{margin-top:24px;font-size:12.5px;color:rgba(250,248,243,.45)}
+
+  /* final cta */
+  .final{text-align:center}
+  .final h2{font-family:var(--serif);font-weight:500;font-size:clamp(2.2rem,4.4vw,3.4rem);letter-spacing:-.02em;line-height:1.05}
+  .final .lede{color:var(--ink-soft);font-size:1.1rem;margin:18px auto 0;max-width:30em}
+  .final .capture{margin:34px auto 0}
+
+  /* footer */
+  footer{border-top:1px solid var(--line);padding:40px 0}
+  footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+  footer .brand{font-size:19px}
+  footer .brand .mark{width:27px;height:27px;font-size:17px;border-radius:8px}
+  footer .meta{font-size:13.5px;color:var(--ink-faint);display:flex;gap:22px;flex-wrap:wrap;align-items:center}
+  footer a:hover{color:var(--ink)}
+
+  /* reveal — only hides when JS is active (.js on <html>); content is always
+     visible without JS, and a safety timeout reveals everything even if the
+     observer never fires, so copy can never get stuck hidden */
+  .js .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+  .js .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:880px){
+    .hero{padding:128px 0 64px}
+    .hero .wrap{grid-template-columns:1fr;gap:8px}
+    .stage{height:430px;margin-top:30px;order:2}
+    .stage .c1{left:4%}
+    .grid-t{grid-template-columns:repeat(2,1fr);gap:20px}
+    .grid-f{grid-template-columns:1fr 1fr;gap:24px 28px}
+    .spot .wrap{grid-template-columns:1fr;gap:40px}
+  }
+  @media (max-width:560px){
+    .wrap{padding:0 20px}
+    .nav{padding:20px}
+    .nav .pill span.hide{display:none}
+    .grid-t{grid-template-columns:1fr;max-width:380px;margin-left:auto;margin-right:auto}
+    .grid-f{grid-template-columns:1fr}
+    .stage{height:380px}
+    .stage .c2{width:190px}
+    .stage .c3{width:200px}
+    .capture form{flex-direction:column;padding:10px}
+    .capture .btn{width:100%}
+    .cd .u{min-width:56px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;scroll-behavior:auto}
+    .js .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a class="brand" href="#top"><span class="mark serif">J</span> Jounce</a>
+    <span class="pill"><span class="dot"></span> Coming soon <span class="hide">— 2026</span></span>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">The design-first email platform</span>
+        <h1 class="serif">Email worth <em>opening.</em></h1>
+        <p class="lede">Jounce is email marketing for brands who sweat the details. Start from templates you'd actually send, build without touching code, and grow a list that opens, clicks, and buys.</p>
+
+        <div class="capture" id="capture1">
+          <form data-capture>
+            <input type="email" name="email" placeholder="you@yourbrand.com" required autocomplete="email" aria-label="Email address" />
+            <button class="btn" type="submit">Request early access</button>
+          </form>
+          <div class="micro">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+            Be first when the doors open. One note when it's live — no spam.
+          </div>
+          <div class="thanks"><span class="check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span> You're on the list. We'll be in touch soon.</div>
+        </div>
+      </div>
+
+      <div class="stage" aria-hidden="true">
+        <div class="card-email c1">
+          <div class="ce-photo"><img src="https://images.pexels.com/photos/4050315/pexels-photo-4050315.jpeg?auto=compress&cs=tinysrgb&w=900" alt="" loading="eager" /></div>
+          <div class="ce-body">
+            <div class="ce-cat">Welcome</div>
+            <div class="ce-title serif">A little hello from us</div>
+            <div class="ce-text">We're so glad you're here. Here's everything you need to get started — and a treat to say thanks.</div>
+            <span class="ce-btn">Start here</span>
+          </div>
+        </div>
+        <div class="card-email c2">
+          <div class="ce-photo"><img src="https://images.pexels.com/photos/9558577/pexels-photo-9558577.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" loading="lazy" /></div>
+          <div class="ce-body"><div class="ce-cat">Launch</div><div class="ce-title serif">It's finally here</div></div>
+        </div>
+        <div class="card-email c3">
+          <div class="ce-photo"><img src="https://images.pexels.com/photos/6311392/pexels-photo-6311392.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" loading="lazy" /></div>
+          <div class="ce-body"><div class="ce-cat">The Sale</div><div class="ce-title serif">48 hours only</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <div class="trust">
+    <div class="wrap"><p>Built for <strong>creators, shops, and studios</strong> who believe a newsletter can be as beautiful as the brand behind it.</p></div>
+  </div>
+
+  <!-- TEMPLATES -->
+  <section class="block templates" id="templates">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow">Templates</span>
+        <h2 class="serif">Start from something beautiful.</h2>
+        <p>Every template is art-directed down to the last detail. Drop in your words and photos, and you've got an email that looks like you hired a studio.</p>
+      </div>
+      <div class="grid-t">
+        <article class="tcard reveal">
+          <div class="ph"><img src="https://images.pexels.com/photos/4050315/pexels-photo-4050315.jpeg?auto=compress&cs=tinysrgb&w=800" alt="The Welcome Letter template" loading="lazy" /></div>
+          <div class="meta"><div class="cat">Welcome</div><h3 class="serif">The Welcome Letter</h3><p>Make a warm first impression the moment someone joins.</p></div>
+        </article>
+        <article class="tcard reveal">
+          <div class="ph"><img src="https://images.pexels.com/photos/9558577/pexels-photo-9558577.jpeg?auto=compress&cs=tinysrgb&w=800" alt="The Launch template" loading="lazy" /></div>
+          <div class="meta"><div class="cat">Launch</div><h3 class="serif">The Launch</h3><p>Build the moment and land it in every inbox at once.</p></div>
+        </article>
+        <article class="tcard reveal">
+          <div class="ph"><img src="https://images.pexels.com/photos/6311392/pexels-photo-6311392.jpeg?auto=compress&cs=tinysrgb&w=800" alt="The Sale template" loading="lazy" /></div>
+          <div class="meta"><div class="cat">Promotion</div><h3 class="serif">The Sale</h3><p>A clean, urgent layout that turns browsers into buyers.</p></div>
+        </article>
+        <article class="tcard reveal">
+          <div class="ph"><img src="https://images.pexels.com/photos/5704849/pexels-photo-5704849.jpeg?auto=compress&cs=tinysrgb&w=800" alt="The Invitation template" loading="lazy" /></div>
+          <div class="meta"><div class="cat">Event</div><h3 class="serif">The Invitation</h3><p>An elegant RSVP for launches, dinners, and openings.</p></div>
+        </article>
+        <article class="tcard reveal">
+          <div class="ph"><img src="https://images.pexels.com/photos/6957086/pexels-photo-6957086.jpeg?auto=compress&cs=tinysrgb&w=800" alt="The Edit template" loading="lazy" /></div>
+          <div class="meta"><div class="cat">Roundup</div><h3 class="serif">The Edit</h3><p>A curated, magazine-style roundup of what's new.</p></div>
+        </article>
+        <article class="tcard reveal">
+          <div class="ph"><img src="https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=800" alt="The Weekly Letter template" loading="lazy" /></div>
+          <div class="meta"><div class="cat">Newsletter</div><h3 class="serif">The Weekly Letter</h3><p>A quiet, readable rhythm your subscribers look forward to.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="block" id="features">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow">Why Jounce</span>
+        <h2 class="serif">Everything you need to send like a pro.</h2>
+        <p>The polish of a design studio, the simplicity of a tool you'll actually enjoy opening.</p>
+      </div>
+      <div class="grid-f">
+        <div class="feat reveal">
+          <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+          <h3 class="serif">Designer templates</h3>
+          <p>Dozens of art-directed layouts, ready to make yours. They look hand-crafted because they were.</p>
+        </div>
+        <div class="feat reveal">
+          <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></div>
+          <h3 class="serif">Drag-and-drop builder</h3>
+          <p>Move blocks, swap photos, change a color. No code, no fiddling — what you see is exactly what sends.</p>
+        </div>
+        <div class="feat reveal">
+          <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg></div>
+          <h3 class="serif">Forms that grow your list</h3>
+          <p>Beautiful sign-up forms and pop-ups you can publish anywhere — and watch your audience build itself.</p>
+        </div>
+        <div class="feat reveal">
+          <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg></div>
+          <h3 class="serif">Broadcasts &amp; automations</h3>
+          <p>Send to the right people at the right moment — one-off broadcasts or flows that run on their own.</p>
+        </div>
+        <div class="feat reveal">
+          <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg></div>
+          <h3 class="serif">Designed compositions</h3>
+          <p>Layer type over photography with pixel-perfect control — rendered crisply in every inbox, every time.</p>
+        </div>
+        <div class="feat reveal">
+          <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <h3 class="serif">Audiences &amp; segments</h3>
+          <p>Group subscribers by what they do, then speak to each group like you actually know them.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN SPOTLIGHT -->
+  <section class="block spot" id="live">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow">Live in the inbox</span>
+        <h2 class="serif">Emails that update themselves.</h2>
+        <p>Add a countdown that's still ticking when your reader opens it — hours later, days later, exactly right. It's the kind of detail that makes people click. And it's built in.</p>
+      </div>
+      <div class="cd reveal">
+        <div class="lab">Launching in</div>
+        <div class="clock" id="clock">
+          <div class="u"><div class="n" data-d>00</div><div class="t">Days</div></div>
+          <div class="sep">:</div>
+          <div class="u"><div class="n" data-h>00</div><div class="t">Hours</div></div>
+          <div class="sep">:</div>
+          <div class="u"><div class="n" data-m>00</div><div class="t">Minutes</div></div>
+          <div class="sep">:</div>
+          <div class="u"><div class="n" data-s>00</div><div class="t">Seconds</div></div>
+        </div>
+        <div class="cap">Rendered live, on every open — a real Jounce countdown.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="block final" id="access">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow">Coming soon</span>
+        <h2 class="serif">Good email is on its way.</h2>
+        <p class="lede">Join the early list and we'll send a single, well-designed email the day Jounce opens.</p>
+        <div class="capture" id="capture2">
+          <form data-capture>
+            <input type="email" name="email" placeholder="you@yourbrand.com" required autocomplete="email" aria-label="Email address" />
+            <button class="btn" type="submit">Request early access</button>
+          </form>
+          <div class="micro" style="justify-content:center">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+            We'll only email you once — to say it's live.
+          </div>
+          <div class="thanks" style="justify-content:center"><span class="check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span> You're on the list. Talk soon.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand serif" href="#top"><span class="mark serif">J</span> Jounce</a>
+    <div class="meta">
+      <span>© 2026 Jounce</span>
+      <a href="mailto:hello@jounce.com">hello@jounce.com</a>
+      <span>Made with care.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal — progressive enhancement with two safety nets:
+  // (1) no IntersectionObserver support -> reveal everything immediately,
+  // (2) a timeout reveals anything still hidden, so copy can't get stuck.
+  const reveals = document.querySelectorAll('.reveal');
+  const showAll = () => reveals.forEach((el) => el.classList.add('in'));
+  if (!('IntersectionObserver' in window)) {
+    showAll();
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    reveals.forEach((el) => io.observe(el));
+    setTimeout(showAll, 2600);
+  }
+
+  // Countdown — to a launch date (UTC), ticks every second
+  const LAUNCH = new Date('2026-08-01T16:00:00Z').getTime();
+  const pad = (n) => String(n).padStart(2, '0');
+  const elD = document.querySelector('[data-d]'), elH = document.querySelector('[data-h]'),
+        elM = document.querySelector('[data-m]'), elS = document.querySelector('[data-s]');
+  function tick(){
+    let diff = Math.max(0, LAUNCH - Date.now());
+    const d = Math.floor(diff / 86400000); diff -= d*86400000;
+    const h = Math.floor(diff / 3600000); diff -= h*3600000;
+    const m = Math.floor(diff / 60000); diff -= m*60000;
+    const s = Math.floor(diff / 1000);
+    elD.textContent = pad(d); elH.textContent = pad(h); elM.textContent = pad(m); elS.textContent = pad(s);
+  }
+  tick(); setInterval(tick, 1000);
+
+  // Email capture — no backend yet; record intent via mailto + show thanks
+  document.querySelectorAll('form[data-capture]').forEach((form) => {
+    form.addEventListener('submit', (ev) => {
+      ev.preventDefault();
+      const email = form.querySelector('input[type=email]').value.trim();
+      if (!email) return;
+      const wrap = form.closest('.capture');
+      wrap.classList.add('done');
+      // Open a pre-filled note so the address actually reaches us until the
+      // backend waitlist is wired up.
+      try {
+        window.location.href = 'mailto:hello@jounce.com?subject=' +
+          encodeURIComponent('Early access — Jounce') +
+          '&body=' + encodeURIComponent('Please add me to the Jounce early-access list: ' + email);
+      } catch (e) {}
+    });
+  });
+</script>
+</body>
+</html>
