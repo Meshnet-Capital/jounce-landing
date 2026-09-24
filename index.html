@@ -240,6 +240,9 @@
   .cd .t{font-size:var(--fs-micro);letter-spacing:.14em;text-transform:uppercase;color:var(--text-tertiary);margin-top:11px}
   .cd .sep{font-size:clamp(1.8rem,4vw,2.6rem);color:var(--carbon-600);line-height:1.1;font-family:var(--font-mono)}
   .cd .cap{margin-top:22px;font-size:var(--fs-caption);color:var(--text-tertiary)}
+  /* the card ships hidden and the script shows it only while time is left, so a
+     passed date (or no script) leaves the copy alone on the row — never zeros */
+  .spot .wrap:has(> .cd[hidden]){grid-template-columns:1fr}
 
   /* final cta (dark) */
   .final{text-align:center}
@@ -518,7 +521,7 @@
       <h2>Emails that update themselves.</h2>
       <p>Add a countdown that's still ticking when your reader opens it — hours later, days later, exactly right. It's the kind of detail that makes people click. And it's built in.</p>
     </div>
-    <div class="cd reveal">
+    <div class="cd reveal" hidden>
       <div class="lab"><span class="dot"></span> Launching in</div>
       <div class="clock" id="clock">
         <div class="u"><div class="n num" data-d>00</div><div class="t">Days</div></div>
@@ -607,20 +610,26 @@
     setTimeout(showAll, 2600);
   }
 
-  // Countdown — to a launch date (UTC), ticks every second. Digits wear .num.
-  const LAUNCH = new Date('2026-08-01T16:00:00Z').getTime();
+  // Countdown — to the launch moment (UTC), ticks every second. Digits wear .num.
+  // The card is shown only while time is left; once the moment passes it hides
+  // itself and the ticking stops, so a missed date can never read 00:00:00:00.
+  const LAUNCH = new Date('2026-10-14T16:00:00Z').getTime();
   const pad = (n) => String(n).padStart(2, '0');
+  const card = document.querySelector('.cd');
   const elD = document.querySelector('[data-d]'), elH = document.querySelector('[data-h]'),
         elM = document.querySelector('[data-m]'), elS = document.querySelector('[data-s]');
   function tick(){
-    let diff = Math.max(0, LAUNCH - Date.now());
+    let diff = LAUNCH - Date.now();
+    card.hidden = diff <= 0;
+    if (card.hidden) return clearInterval(timer);
     const d = Math.floor(diff / 86400000); diff -= d*86400000;
     const h = Math.floor(diff / 3600000); diff -= h*3600000;
     const m = Math.floor(diff / 60000); diff -= m*60000;
     const s = Math.floor(diff / 1000);
     elD.textContent = pad(d); elH.textContent = pad(h); elM.textContent = pad(m); elS.textContent = pad(s);
   }
-  tick(); setInterval(tick, 1000);
+  const timer = setInterval(tick, 1000);
+  tick();
 
   // Email capture — no backend yet; record intent via mailto + show thanks.
   document.querySelectorAll('form[data-capture]').forEach((form) => {
