@@ -284,7 +284,14 @@
     .stage .f3{width:212px}
     .capture form{flex-direction:column;padding:9px}
     .capture .btn{width:100%}
-    .cd .u{min-width:56px}
+    /* four tracked labels plus three colons are wider than a phone: drop the
+       colons and give the units equal columns, so the card stays on screen
+       and the numbers stay evenly spaced */
+    .cd{padding:34px 16px}
+    .cd .clock{gap:8px}
+    .cd .sep{display:none}
+    .cd .u{flex:1 1 0;min-width:auto}
+    .cd .n{font-size:clamp(2rem,10vw,2.3rem)}
   }
   @media (prefers-reduced-motion:reduce){
     *{animation:none!important;scroll-behavior:auto}
